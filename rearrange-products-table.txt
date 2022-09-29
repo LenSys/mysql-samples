@@ -1,0 +1,26 @@
+Rearrange Products Table
+
+Input: 
+Products table:
++------------+--------+--------+--------+
+| product_id | store1 | store2 | store3 |
++------------+--------+--------+--------+
+| 0          | 95     | 100    | 105    |
+| 1          | 70     | null   | 80     |
++------------+--------+--------+--------+
+
+Output: 
++------------+--------+-------+
+| product_id | store  | price |
++------------+--------+-------+
+| 0          | store1 | 95    |
+| 0          | store2 | 100   |
+| 0          | store3 | 105   |
+| 1          | store1 | 70    |
+| 1          | store3 | 80    |
++------------+--------+-------+
+
+
+SELECT product_id, 'store1' as store, store1 as price FROM products WHERE store1 IS NOT NULL UNION
+SELECT product_id, 'store2' as store, store2 as price FROM products WHERE store2 IS NOT NULL UNION
+SELECT product_id, 'store3' as store, store3 as price FROM products WHERE store3 IS NOT NULL;
